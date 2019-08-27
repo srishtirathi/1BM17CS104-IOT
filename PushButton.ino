@@ -1,19 +1,25 @@
-void setup() {
- pinMode(13,OUTPUT);
- pinMode(2,INPUT);// put your setup code here, to run once:
+int ledPin=13;
+int pushButton=2;
 
+void setup()
+{
+  pinMode(ledPin,OUTPUT);
+  pinMode(pushButton,OUTPUT);
+  Serial.begin(9600);
 }
 
-void loop() {
-  int buttonread=0;
-  buttonread=digitalRead(2);
-  if(buttonread==HIGH)
+void loop()
+{
+  digitalWrite(ledPin,LOW);
+  int x=digitalRead(pushButton);
+  if(x==1)
   {
-    digitalWrite(13,HIGH);
+    digitalWrite(ledPin,HIGH);
+    Serial.println("light on");
   }
   else
   {
-    digitalWrite(13,LOW);// put your main code here, to run repeatedly:
+    digitalWrite(ledPin,LOW);
+    Serial.println("light off");
   }
-
 }
