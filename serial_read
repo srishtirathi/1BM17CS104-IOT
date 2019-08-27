@@ -1,0 +1,22 @@
+int ledpin=11;
+void setup()
+{
+  pinMode(ledpin,OUTPUT);
+  Serial.begin(9600);
+}
+void loop()
+{ 
+  if(Serial.available()>0)
+  {
+    char data=Serial.read();
+    Serial.println(data);
+    if(data=='h')
+     {digitalWrite(ledpin,HIGH);
+     delay(1000);}
+    else if(data=='l')
+     digitalWrite(ledpin,LOW);
+    else
+     digitalWrite(ledpin,LOW); 
+      
+  }
+}
